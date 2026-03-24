@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAFAFA;
+  --surface: #FFFFFF;
+  --foreground: #111827;
+  --foreground-secondary: #6B7280;
+  --accent: #111827;
+  --grid-line: rgba(0, 0, 0, 0.05);
+  --shadow-inner: inset 0 2px 4px 0 rgba(255, 255, 255, 0.3);
+}
+
+.dark {
+  --background: #0D0D0D;
+  --surface: #1A1A1A;
+  --foreground: #FFFFFF;
+  --foreground-secondary: #A1A1AA;
+  --accent: #FFFFFF;
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --shadow-inner: inset 0 1px 2px 0 rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-accent: var(--accent);
+  --color-grid-line: var(--grid-line);
+  --font-space: var(--font-space-grotesk);
+  --shadow-inner-3d: var(--shadow-inner);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.grid-background {
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.shadow-3d {
+  box-shadow: var(--shadow-inner), 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.dark .shadow-3d {
+  box-shadow: var(--shadow-inner), 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
 }
